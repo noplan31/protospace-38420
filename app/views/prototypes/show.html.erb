@@ -5,7 +5,7 @@
         <%= @prototype.title%>
       </p>
       <%= link_to "by #{@prototype.user.name}", user_path, class: :prototype__user %>
-      <% if current_user.id == @prototype.user_id %>
+      <% if current_user == @prototype.user%>
         <div class="prototype__manage">
           <%= link_to "編集する", edit_prototype_path(@prototype), class: :prototype__btn %>
           <%= link_to "削除する", prototype_path(@prototype), class: :prototype__btn,method: :delete %>
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="prototype__comments">
-        <% if current_user.id == @prototype.user_id %>
+        <% if current_user == @prototype.user %>
           <%= form_with model: [@prototype, @comment],local: true do |f|%>
             <div class="field">
               <%= f.label :content, "コメント" %><br />
